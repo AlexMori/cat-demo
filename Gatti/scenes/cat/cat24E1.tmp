@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://dfyim8ve5xt8h"]
+
+[ext_resource type="Script" path="res://scenes/cat/cat.gd" id="1_mstis"]
+[ext_resource type="Texture2D" uid="uid://bywix43vfkkjg" path="res://assets/cats/char.png" id="2_nji6g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sueh1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nji6g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2r6yx"]
+radius = 22.0
+height = 48.0
+
+[node name="Cat" type="CharacterBody2D"]
+position = Vector2(245, 438)
+script = ExtResource("1_mstis")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_sueh1")
+
+[node name="RigidBody2D" type="RigidBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
+shape = SubResource("CapsuleShape2D_2r6yx")
+
+[node name="UpdateValues" type="Timer" parent="."]
+
+[connection signal="mouse_entered" from="RigidBody2D" to="." method="_on_rigid_body_2d_mouse_entered"]
+[connection signal="ready" from="UpdateValues" to="." method="_on_action_timer_ready"]
+[connection signal="timeout" from="UpdateValues" to="." method="_on_action_timer_timeout"]

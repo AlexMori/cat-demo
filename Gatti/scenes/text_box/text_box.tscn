@@ -1,0 +1,40 @@
+[gd_scene load_steps=4 format=3 uid="uid://vg2yc8sp6wto"]
+
+[ext_resource type="Script" path="res://scenes/text_box/text_box.gd" id="1_2m3y8"]
+[ext_resource type="Texture2D" uid="uid://b81j6er4pbfnf" path="res://scenes/text_box/text_bubble.png" id="1_hgwrd"]
+[ext_resource type="AudioStream" uid="uid://c4ljywtto18hh" path="res://assets/audio/SFX/speech_sound.wav" id="3_eh7iu"]
+
+[node name="text_box" type="MarginContainer"]
+offset_right = 44.0
+offset_bottom = 39.0
+script = ExtResource("1_2m3y8")
+
+[node name="bubble_image" type="NinePatchRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_hgwrd")
+patch_margin_left = 16
+patch_margin_top = 16
+patch_margin_right = 16
+patch_margin_bottom = 16
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="LabelText" type="Label" parent="MarginContainer"]
+layout_mode = 2
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+vertical_alignment = 1
+
+[node name="LetterDisplayTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_eh7iu")
+volume_db = -20.0
+bus = &"SFX"
+
+[connection signal="timeout" from="LetterDisplayTimer" to="." method="_on_letter_display_timer_timeout"]

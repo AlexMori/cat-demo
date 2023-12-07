@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://bhsq0w0erv2vv"
+path="res://.godot/imported/001 - Main Theme.mp3-d1fdf0843dbe4d74340b6bcd20778919.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/Music/001 - Main Theme.mp3"
+dest_files=["res://.godot/imported/001 - Main Theme.mp3-d1fdf0843dbe4d74340b6bcd20778919.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4
